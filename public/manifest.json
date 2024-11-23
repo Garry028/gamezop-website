@@ -1,0 +1,81 @@
+{
+  "short_name": "Gamezop",
+  "name": "Gamezop",
+  "icons": [
+    {
+      "src": "https://static.gamezop.com/peach/assets/launcher/72x72.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "https://static.gamezop.com/peach/assets/launcher/96x96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "https://static.gamezop.com/peach/assets/launcher/144x144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "https://static.gamezop.com/peach/assets/launcher/192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://static.gamezop.com/peach/assets/launcher/512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "background_color": "#1F2C7B",
+  "theme_color": "#1F2C7B",
+  "display": "standalone",
+  "start_url": "/?pwa=true",
+  "gcm_sender_id": "103953800507",
+  "description": "Gamezop is your go-to destination for an exciting collection of free to play online games. With a vast selection of both multiplayer and single-player games, you can enjoy the best gaming experience where you can play a wide variety of exciting online games directly on our platform.",
+  "screenshots": [
+    {
+      "src": "https://www.gamezop.com/_next/image?url=https%3A%2F%2Fstatic.gamezop.com%2Fcomet%2Fassets%2Fimg%2Fpwa%2Fscreenshot_wide-1.png&w=1080&q=75",
+      "type": "image/png",
+      "sizes": "1080x625",
+      "label": "Gamezop: Free to play online games.",
+      "form_factor": "wide"
+    },
+    {
+      "src": "https://www.gamezop.com/_next/image?url=https%3A%2F%2Fstatic.gamezop.com%2Fcomet%2Fassets%2Fimg%2Fpwa%2Fscreenshot_wide-2.png&w=1080&q=75",
+      "type": "image/png",
+      "sizes": "1080x625",
+      "label": "Gamezop: No install instant play games.",
+      "form_factor": "wide"
+    },
+    {
+      "src": "https://www.gamezop.com/_next/image?url=https%3A%2F%2Fstatic.gamezop.com%2Fcomet%2Fassets%2Fimg%2Fpwa%2Fscreenshot_wide-3.png&w=1080&q=75",
+      "type": "image/png",
+      "sizes": "1080x625",
+      "label": "Gamezop: Multiple game genres available",
+      "form_factor": "wide"
+    },
+    {
+      "src": "https://www.gamezop.com/_next/image?url=https%3A%2F%2Fstatic.gamezop.com%2Fcomet%2Fassets%2Fimg%2Fpwa%2Fscreenshot-1.png&w=384&q=75",
+      "type": "image/png",
+      "sizes": "384x512",
+      "label": "Gamezop: Free to play online games.",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "https://www.gamezop.com/_next/image?url=https%3A%2F%2Fstatic.gamezop.com%2Fcomet%2Fassets%2Fimg%2Fpwa%2Fscreenshot-2.png&w=384&q=75",
+      "type": "image/png",
+      "sizes": "384x512",
+      "label": "Gamezop: No install instant play games.",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "https://www.gamezop.com/_next/image?url=https%3A%2F%2Fstatic.gamezop.com%2Fcomet%2Fassets%2Fimg%2Fpwa%2Fscreenshot-3.png&w=384&q=75",
+      "type": "image/png",
+      "sizes": "384x512",
+      "label": "Gamezop: Multiple game genres available",
+      "form_factor": "narrow"
+    }
+  ]
+}
