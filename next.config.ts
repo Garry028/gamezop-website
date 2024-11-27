@@ -1,17 +1,20 @@
-import type { NextConfig } from "next";
 import withPWAInit from "@ducanh2912/next-pwa";
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  images: {
+    domains: ["static.gamezop.com"],
+  },
 };
-
-const withPWA =  withPWAInit({
+// hostname "static.gamezop.com" is not configured under images in your `next.config.js`
+const withPWA = withPWAInit({
   dest: "public",
-  disable:false,
+  disable: false,
   cacheOnFrontEndNav: true,
   aggressiveFrontEndNavCaching: true,
-  reloadOnOnline:true,
-  workboxOptions:{
+  reloadOnOnline: true,
+  workboxOptions: {
     disableDevLogs: false,
   }
 });

@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-
+import  lineClamp from '@tailwindcss/line-clamp';
 export default {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,10 +9,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: "#3e51b5",
+        bgMain: "#f0f1f9",
+
       },
     },
   },
-  plugins: [],
+  plugins: [
+    lineClamp,
+  ],
 } satisfies Config;
