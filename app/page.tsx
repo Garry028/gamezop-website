@@ -1,10 +1,5 @@
 import GameSection from "./components/GameSection";
-
-interface HomeProps {
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-export default function Home({ searchParams }: HomeProps) {
+export default function Home({ searchParams }: { searchParams: never }) {
   return (
     <div className="container mx-auto">
       <GameSection searchParams={searchParams} />
