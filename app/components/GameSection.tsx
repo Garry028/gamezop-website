@@ -33,11 +33,10 @@ const GameSection: React.FC = () => {
     try {
       const data = await fetchGames();
       setGames(data);
-      console.log(data);
+      setLoading(false);
     } catch (error) {
       setError("Error fetching games. Please try again later.");
       console.error(error);
-    } finally {
       setLoading(false);
     }
   };
@@ -46,14 +45,23 @@ const GameSection: React.FC = () => {
     getData();
   }, []);
 
-  // Filter games based on selected category
+  // Filter games based on selected category and search query
   const filteredGames = React.useMemo(() => {
+    let result = games;
+
     if (searchParams.has("category")) {
       const category = searchParams.get("category");
-      return games.filter((game) => game.categories.en[0] === category);
-    } else {
-      return games;
+      result = result.filter((game) => game.categories.en[0] === category);
     }
+
+    if (searchParams.has("search")) {
+      const searchQuery = searchParams.get("search")!.toLowerCase();
+      result = result.filter((game) =>
+        game.name.en.toLowerCase().includes(searchQuery)
+      );
+    }
+
+    return result;
   }, [searchParams, games]);
 
   // Pagination logic
@@ -106,7 +114,6 @@ const GameSection: React.FC = () => {
           </div>
         </div>
       ))}
-
 
       {/* Pagination */}
       <Pagination

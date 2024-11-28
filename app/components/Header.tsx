@@ -12,17 +12,18 @@ import {
   FaRunning,
 } from "react-icons/fa";
 
-import { useRouter } from "next/navigation"; // Correct import
+import { useRouter } from "next/navigation";
 import { FiSearch, FiX } from "react-icons/fi";
 import Logo from "../assets/gamezop-logo-dark.avif";
 import Button from "./ui/Button";
 
 const Header: React.FC = () => {
   const router = useRouter();
-  const [showSearch, setShowSearch] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [showSearch, setShowSearch] = useState<boolean>(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const navigationItems = [
+  const navigationItems: { icon: JSX.Element; label: string }[] = [
     { icon: <FaRunning />, label: "Action" },
     { icon: <FaMountain />, label: "Adventure" },
     { icon: <FaGamepad />, label: "Arcade" },
@@ -33,16 +34,26 @@ const Header: React.FC = () => {
   ];
 
   const onClickOnButton = (category: string) => {
-
     const newUrl = `?category=${encodeURIComponent(category)}`;
     router.push(newUrl);
+  };
+
+  const onSearch = () => {
+    if (searchQuery.trim().length > 0) {
+      const newUrl = `?search=${encodeURIComponent(searchQuery)}`;
+      router.push(newUrl);
+      setShowSearch(false);
+    }
   };
 
   return (
     <header className="bg-gradient-to-r from-blue-500 to-purple-600 text-white fixed top-0 left-0 w-full z-50 shadow-md">
       <nav className="container mx-auto flex items-center justify-between px-6 py-4">
         {/* Left Logo */}
-        <div className="flex items-center space-x-2">
+        <div
+          className="flex items-center space-x-2 cursor-pointer"
+          onClick={() => router.push("/")}
+        >
           <Image src={Logo} alt="Gamezop Logo" width={140} height={40} />
         </div>
 
@@ -90,8 +101,18 @@ const Header: React.FC = () => {
                 type="text"
                 placeholder="Search for games"
                 className="w-full py-2 px-4 outline-none bg-transparent text-gray-700"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && onSearch()}
               />
-              <button className="p-2" onClick={() => setShowSearch(false)}>
+              <button
+                className="p-2"
+                onClick={() => {
+                  setSearchQuery("");
+                  const newUrl = window.location.pathname;
+                  router.push(newUrl);
+                }}
+              >
                 <FiX className="w-5 h-5 text-gray-500 mr-4" />
               </button>
             </div>
