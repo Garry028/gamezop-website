@@ -1,11 +1,13 @@
 import GameSection from "./components/GameSection";
-import { Suspense } from "react";
-export default function Home() {
+
+interface HomeProps {
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default function Home({ searchParams }: HomeProps) {
   return (
-    <div className="container mx-auto ">
-      <Suspense>
-        <GameSection />
-      </Suspense>
+    <div className="container mx-auto">
+      <GameSection searchParams={searchParams} />
     </div>
   );
 }

@@ -1,27 +1,30 @@
-// components/Pagination.tsx
-
-import React from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+'use client';
+import React from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
-  onPageChange: (page: number) => void;
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
-  onPageChange,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  searchParams,
 }) => {
-  // Function to generate an array of page numbers
+  const router = useRouter();
+  const pathname = usePathname();
+  const currentSearchParams = useSearchParams();
+
   const getPageNumbers = () => {
     const pages = [];
-    const maxPageNumbersToShow = 5; // Maximum number of page buttons to display
+    const maxPageNumbersToShow = 5;
     let startPage = Math.max(1, currentPage - 2);
     let endPage = Math.min(totalPages, currentPage + 2);
 
-    // Adjust the start and end pages if we're near the beginning or end
     if (currentPage <= 3) {
       startPage = 1;
       endPage = Math.min(totalPages, maxPageNumbersToShow);
@@ -39,20 +42,25 @@ const Pagination: React.FC<PaginationProps> = ({
 
   const pageNumbers = getPageNumbers();
 
+  const handlePageChange = (page: number) => {
+    const params = new URLSearchParams(currentSearchParams.toString());
+    params.set('page', page.toString());
+    router.push(`${pathname}?${params.toString()}`);
+  };
+
   return (
     <nav
       className="flex items-center justify-center space-x-2 mt-8"
       aria-label="Pagination Navigation"
     >
-      {/* Previous Button */}
       <button
-        onClick={() => onPageChange(currentPage - 1)}
+        onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
         className={`flex items-center px-3 py-2 rounded-md
           ${
             currentPage === 1
-              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-              : "bg-indigo-600 text-white hover:bg-indigo-700"
+              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              : 'bg-indigo-600 text-white hover:bg-indigo-700'
           }
         `}
         aria-label="Previous Page"
@@ -61,34 +69,32 @@ const Pagination: React.FC<PaginationProps> = ({
         Previous
       </button>
 
-      {/* Page Numbers */}
       {pageNumbers.map((page) => (
         <button
           key={page}
-          onClick={() => onPageChange(page)}
+          onClick={() => handlePageChange(page)}
           className={`px-4 py-2 rounded-md
             ${
               currentPage === page
-                ? "bg-indigo-800 text-white"
-                : "bg-indigo-600 text-white hover:bg-indigo-700"
+                ? 'bg-indigo-800 text-white'
+                : 'bg-indigo-600 text-white hover:bg-indigo-700'
             }
           `}
-          aria-current={currentPage === page ? "page" : undefined}
+          aria-current={currentPage === page ? 'page' : undefined}
           aria-label={`Page ${page}`}
         >
           {page}
         </button>
       ))}
 
-      {/* Next Button */}
       <button
-        onClick={() => onPageChange(currentPage + 1)}
+        onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         className={`flex items-center px-3 py-2 rounded-md
           ${
             currentPage === totalPages
-              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-              : "bg-indigo-600 text-white hover:bg-indigo-700"
+              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              : 'bg-indigo-600 text-white hover:bg-indigo-700'
           }
         `}
         aria-label="Next Page"

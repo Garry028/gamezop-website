@@ -1,8 +1,8 @@
-// components/GameCard.tsx
+'use client';
 
-import Image from "next/image";
-import React, { useState } from "react";
-import { Game } from "../interfaces/Games";
+import Image from 'next/image';
+import React, { useState } from 'react';
+import { Game } from '../interfaces/Games';
 
 interface GameCardProps {
   game: Game;
@@ -66,7 +66,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
             <p className="text-gray-700 mb-4">{game.description.en}</p>
             <button
               onClick={() => {
-                window.open(game.url, "_blank");
+                window.open(game.url, '_blank');
                 setIsModalOpen(false);
               }}
               className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"

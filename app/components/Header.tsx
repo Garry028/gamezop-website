@@ -49,7 +49,6 @@ const Header: React.FC = () => {
   return (
     <header className="bg-gradient-to-r from-blue-500 to-purple-600 text-white fixed top-0 left-0 w-full z-50 shadow-md">
       <nav className="container mx-auto flex items-center justify-between px-6 py-4">
-        {/* Left Logo */}
         <div
           className="flex items-center space-x-2 cursor-pointer"
           onClick={() => router.push("/")}
@@ -57,7 +56,6 @@ const Header: React.FC = () => {
           <Image src={Logo} alt="Gamezop Logo" width={140} height={40} />
         </div>
 
-        {/* Desktop Navigation */}
         <div className="hidden xl:flex items-center space-x-4">
           {navigationItems.map((item, index) => (
             <Button
@@ -69,7 +67,6 @@ const Header: React.FC = () => {
           ))}
         </div>
 
-        {/* Right Icons */}
         <div className="flex items-center space-x-4">
           <button
             className="p-2 rounded-full hover:bg-white hover:bg-opacity-20 transition"
@@ -82,7 +79,6 @@ const Header: React.FC = () => {
             )}
           </button>
 
-          {/* Mobile Menu Toggle */}
           <button
             className="xl:hidden p-2 rounded-full hover:bg-white hover:bg-opacity-20 transition"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -91,7 +87,6 @@ const Header: React.FC = () => {
           </button>
         </div>
       </nav>
-      {/* Search Bar */}
       {showSearch && (
         <div className="bg-gray-100">
           <div className="container mx-auto py-2">
@@ -120,7 +115,6 @@ const Header: React.FC = () => {
         </div>
       )}
 
-      {/* Mobile Navigation Menu */}
       {menuOpen && (
         <div className="xl:hidden bg-white text-gray-800">
           <div className="px-6 py-4 space-y-2">
